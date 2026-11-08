@@ -40,7 +40,7 @@ export const courses = [
     id: 'keyboard',
     name: 'Keyboard',
     category: 'Instrumental Music',
-    level: 'Beginner to intermediate',
+    level: 'Beginner to Advanced',
     description:
       'Explore melody, harmony, and rhythmic coordination on the keyboard.',
     image: {
@@ -50,17 +50,17 @@ export const courses = [
     enquiry: courseEnquiry('Keyboard classes'),
   },
   {
-    id: 'piano',
-    name: 'Piano',
+    id: 'harmonium',
+    name: 'Harmonium',
     category: 'Instrumental Music',
-    level: 'Beginner to intermediate',
+    level: 'Beginner to Advanced',
     description:
-      'Develop musical expression, technique, and a strong foundation at the piano.',
+      'Develop musical expression, technique, and a strong foundation with the harmonium.',
     image: {
       src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1300&q=85',
-      alt: 'Piano keys in a music practice space',
+      alt: 'Harmonium keys in a music practice space',
     },
-    enquiry: courseEnquiry('Piano classes'),
+    enquiry: courseEnquiry('Harmonium classes'),
   },
   {
     id: 'hindustani-classical-vocal',

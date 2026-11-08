@@ -16,7 +16,7 @@ export default function Pricing() {
         <p className="pricing-disclaimer">Fees are intentionally shown as a contact enquiry until they are configured by the academy. Update this in <code>src/data/pricing.js</code> before publishing.</p>
         <div className="pricing-grid">
           {pricing.map((plan, index) => (
-            <article className={`pricing-card ${index === 0 ? 'pricing-card--accent' : ''}`} key={plan.course}>
+            <article className={`pricing-card ${index === 0 ? 'pricing-card--accent' : ''}`} id={`pricing-${plan.courseId}`} key={plan.course}>
               <div className="pricing-card-top">
                 <p className="eyebrow">Music programme</p>
                 <h3>{plan.course}</h3>

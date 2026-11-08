@@ -1,12 +1,41 @@
+import { useEffect, useRef } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { courses } from '../data/courses'
-import { hasEmail, makeMailto } from '../utils/contact'
+import { pricing } from '../data/pricing'
 
 const categoryOrder = ['Instrumental Music', 'Vocal Music', 'Music Theory']
 
 export default function Classes() {
+  const classesRef = useRef(null)
+
+  useEffect(() => {
+    const courseCards = classesRef.current?.querySelectorAll('.course-card')
+    if (!courseCards?.length) return
+
+    const revealCards = () => courseCards.forEach((card) => card.classList.add('is-visible'))
+
+    if (
+      !('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      revealCards()
+      return
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        entry.target.classList.add('is-visible')
+        observer.unobserve(entry.target)
+      })
+    }, { rootMargin: '0px 0px -24px 0px', threshold: 0.12 })
+
+    courseCards.forEach((card) => observer.observe(card))
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="classes section" id="classes" aria-labelledby="classes-title">
+    <section className="classes section" id="classes" aria-labelledby="classes-title" ref={classesRef}>
       <div className="container">
         <div className="section-heading section-heading--wide">
           <div>
@@ -27,35 +56,34 @@ export default function Classes() {
                 <span>{String(categoryCourses.length).padStart(2, '0')} programmes</span>
               </div>
               <div className="course-grid">
-                {categoryCourses.map((course) => (
-                  <article className="course-card" key={course.name}>
-                    <div className="course-image media-frame">
-                      <img
-                        src={course.image.src}
-                        alt={course.image.alt}
-                        loading="lazy"
-                        onError={(event) => event.currentTarget.parentElement.classList.add('image-unavailable')}
-                      />
-                    </div>
-                    <div className="course-card-content">
-                      <div className="course-meta">
-                        <span>{course.category}</span>
-                        <span>{course.level}</span>
+                {categoryCourses.map((course) => {
+                  const hasMatchingPricing = pricing.some((plan) => plan.courseId === course.id)
+
+                  return (
+                    <a
+                      className="course-card"
+                      href={hasMatchingPricing ? `#pricing-${course.id}` : '#pricing'}
+                      aria-label={`View pricing for ${course.name}`}
+                      key={course.name}
+                    >
+                      <div className="course-image media-frame">
+                        <img
+                          src={course.image.src}
+                          alt={course.image.alt}
+                          loading="lazy"
+                          onError={(event) => event.currentTarget.parentElement.classList.add('image-unavailable')}
+                        />
                       </div>
-                      <h3>{course.name}</h3>
-                      <p>{course.description}</p>
-                      {hasEmail ? (
-                        <a className="text-link course-link" href={makeMailto(course.enquiry.subject, course.enquiry.body)} aria-label={`Enquire about ${course.name}`}>
-                          Enquire now <ArrowUpRight size={17} aria-hidden="true" />
-                        </a>
-                      ) : (
-                        <a className="text-link course-link setup-link" href="#contact" aria-label={`Contact setup needed to enquire about ${course.name}`}>
-                          Email setup needed <ArrowUpRight size={17} aria-hidden="true" />
-                        </a>
-                      )}
-                    </div>
-                  </article>
-                ))}
+                      <div className="course-card-content">
+                        <h3>{course.name}</h3>
+                        <p>{course.description}</p>
+                      </div>
+                      <span className="course-card-arrow" aria-hidden="true">
+                        <ArrowUpRight size={18} aria-hidden="true" />
+                      </span>
+                    </a>
+                  )
+                })}
               </div>
             </div>
           )
