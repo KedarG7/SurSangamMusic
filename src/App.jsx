@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Founder from './components/Founder'
 import Classes from './components/Classes'
 import ClassSchedules from './components/ClassSchedules'
 import Pricing from './components/Pricing'
-import WhyChooseUs from './components/WhyChooseUs'
 import Gallery from './components/Gallery'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -30,10 +30,10 @@ function App() {
         <Hero />
         <Classes />
         <About />
-        <ClassSchedules />
-        <Pricing />
-        <WhyChooseUs />
         <Gallery />
+        <ClassSchedules />
+        <Founder />
+        {/* <Pricing /> */}
         <Contact />
       </main>
       <Footer />
