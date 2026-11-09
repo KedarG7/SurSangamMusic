@@ -27,11 +27,12 @@ export const siteConfig = {
 
   navigation: [
     { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
     { label: 'Classes', href: '#classes' },
-    { label: 'Schedule', href: '#schedule' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'About', href: '#about' },
     { label: 'Gallery', href: '#gallery' },
+    { label: 'Schedule', href: '#schedule' },
+    { label: 'Founder', href: '#founder' },
+    // { label: 'Pricing', href: '#pricing' },
     { label: 'Contact', href: '#contact' },
   ],
 
@@ -39,10 +40,10 @@ export const siteConfig = {
     // Add real values before deployment. Empty strings deliberately produce no
     // live telephone, email, WhatsApp, address, map, or social destination.
     phone: '9594716395',
-    email: 'gurav.kedar2005@gmail.com',
+    email: 'rahuld841@gmail.com',
     whatsappNumber: '9594716395',
     address: 'Shop no 7 (rehab), Siddhivinayak SRA CHS LTD Building, Vikhroli station road, Vikhroli west, Mumbai, Maharashtra, 400083',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.904897835928!2d72.9268543!3d19.111827599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c71873d16023%3A0x69b4047f19784b4b!2sSur%20Sangam%20Music%20Academy!5e0!3m2!1sen!2sin!4v1793717426472!5m2!1sen!2sin" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.904897835928!2d72.9268543!3d19.111827599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c71873d16023%3A0x69b4047f19784b4b!2sSur%20Sangam%20Music%20Academy!5e0!3m2!1sen!2sin!4v1794207040112!5m2!1sen!2sin',
 
     // Components should show these labels whenever the related value is empty.
     placeholderLabels: {

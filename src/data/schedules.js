@@ -28,9 +28,9 @@ export const schedules = [
     isSample: true,
   },
   {
-    id: 'piano-evening',
-    courseId: 'piano',
-    course: 'Piano',
+    id: 'harmonium-evening',
+    courseId: 'harmonium',
+    course: 'Harmonium',
     days: 'Monday, Wednesday, Friday',
     timing: '6 PM – 7 PM',
     duration: '1 Hour',

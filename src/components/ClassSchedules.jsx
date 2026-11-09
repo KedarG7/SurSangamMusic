@@ -1,11 +1,37 @@
+import { useEffect, useRef } from 'react'
 import { ArrowDownRight, Clock3 } from 'lucide-react'
 import BlobButton from './BlobButton'
 import { schedules } from '../data/schedules'
 import { generalEnquiry, hasEmail } from '../utils/contact'
 
 export default function ClassSchedules() {
+  const scheduleRef = useRef(null)
+
+  useEffect(() => {
+    const section = scheduleRef.current
+    if (!section) return
+
+    const showSchedule = () => section.classList.add('schedule-is-visible')
+    if (
+      !('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      showSchedule()
+      return
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      showSchedule()
+      observer.disconnect()
+    }, { threshold: 0.12 })
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="schedule section section--ink" id="schedule" aria-labelledby="schedule-title">
+    <section className="schedule section section--ink" id="schedule" aria-labelledby="schedule-title" ref={scheduleRef}>
       <div className="container">
         <div className="schedule-heading">
           <div>
@@ -14,7 +40,7 @@ export default function ClassSchedules() {
           </div>
           <div>
             <p>Explore our class schedules and choose the musical programme that suits your routine.</p>
-            <p className="sample-note"><Clock3 size={15} aria-hidden="true" /> Sample timetable — editable, not confirmed academy timings.</p>
+            {/* <p className="sample-note"><Clock3 size={15} aria-hidden="true" /> Sample timetable — editable, not confirmed academy timings.</p> */}
           </div>
         </div>
 

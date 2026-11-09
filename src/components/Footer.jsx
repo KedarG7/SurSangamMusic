@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="container footer-bottom"><span>© {new Date().getFullYear()} {siteConfig.academyName}. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
+      <div className="container footer-bottom"><a href="#home"><span>© {new Date().getFullYear()} {siteConfig.academyName}. All rights reserved.</span></a></div>
     </footer>
   )
 }

@@ -15,7 +15,7 @@ export default function Contact() {
       <div className="container">
         <div className="contact-intro">
           <p className="eyebrow eyebrow--light"><span /> Contact &amp; enquiries</p>
-          <h2 id="contact-title">Ready to begin your <em>musical journey?</em></h2>
+          <h2 className="contact-title"id="contact-title">Ready to begin your <em>musical journey?</em></h2>
           <p>Have questions about our classes? Get in touch with us and take your first step towards discovering music.</p>
         </div>
 
@@ -31,6 +31,7 @@ export default function Contact() {
             <Phone size={24} strokeWidth={1.4} aria-hidden="true" />
             <p className="contact-label">Call us</p>
             <h3>{hasPhone ? siteConfig.contact.phone : siteConfig.contact.placeholderLabels.phone}</h3>
+            <h3>RAHUL DEULKAR</h3>
             <p>Prefer a quick conversation? We’d love to hear what you want to learn.</p>
             <ContactAction active={hasPhone} href={phoneHref} label="Call now" disabledLabel="Set phone to enable" />
           </article>
@@ -51,11 +52,21 @@ export default function Contact() {
         </div>
 
         {hasAddress ? (
-            <div className="contact-address">
+          <div className="contact-address">
             <MapPin size={20} aria-hidden="true" />
             <div><span>Visit the academy</span><p>{siteConfig.contact.address}</p></div>
           </div>
         ) : null}
+
+        <div className="contact-map">
+          <iframe
+            src={siteConfig.contact.mapEmbedUrl}
+            title="Map to Sursangam Music Academy"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
       </div>
     </section>
   )

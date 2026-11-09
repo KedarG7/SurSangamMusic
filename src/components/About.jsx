@@ -73,7 +73,7 @@ export default function About() {
               <article className="about-highlight" key={title}>
                 <span className="item-number">{number}</span>
                 <h3>{title}</h3>
-                <ArrowUpRight size={18} aria-hidden="true" />
+                {/* <ArrowUpRight size={18} aria-hidden="true" /> */}
               </article>
             ))}
           </div>
