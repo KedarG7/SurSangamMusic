@@ -21,9 +21,18 @@ export const GENERAL_ENQUIRY_BODY = [
 export const siteConfig = {
   academyName: 'Sursangam Academy',
   tagline: 'Where Every Note Finds Its Rhythm.',
-  pageTitle: 'Sursangam Academy | Music Classes',
+  pageTitle: 'Sursangam Academy | Music Classes in Vikhroli West, Mumbai',
   metaDescription:
-    'Explore instrumental, vocal, and music theory classes at Sursangam Academy.',
+    'Explore guitar, keyboard, harmonium, Hindustani classical vocal, and music theory classes at Sursangam Academy in Vikhroli West, Mumbai. View programmes and enquire.',
+
+  location: {
+    streetAddress: 'Shop no 7 (rehab), Siddhivinayak SRA CHS LTD Building, Vikhroli station road, Vikhroli west',
+    city: 'Mumbai',
+    area: 'Vikhroli West',
+    region: 'Maharashtra',
+    postalCode: '400083',
+    countryCode: 'IN',
+  },
 
   navigation: [
     { label: 'Home', href: '#home' },
@@ -63,52 +72,54 @@ export const siteConfig = {
   },
 
   configurationNotice:
-    'Contact details are placeholders and must be updated before this website is published.',
+    'Verify the configured contact details against the academy’s current public information before launch.',
 
   media: {
-    // Replace these freely with licensed academy photography stored in public/images.
+    // Keep originals in source-assets; reference optimized, licensed derivatives from public.
     hero: {
-      src: 'public/Guitar-hero.jpg',
-      alt: 'Musician performing with a guitar under warm stage lights',
+      src: '/guitar-lesson-hero.jpg',
+      avifSrc: '/guitar-lesson-hero.avif',
+      alt: 'Hands playing an acoustic guitar in warm stage light',
     },
     about: {
-      src: 'public/electric-drums.png',
-      alt: 'Close view of hands playing an acoustic guitar',
+      src: '/electronic-drum-kit.jpg',
+      avifSrc: '/electronic-drum-kit.avif',
+      alt: 'Musician playing an electronic drum kit in a practice room',
     },
     gallery: [
       {
         id: 'guitar-learning',
-        src: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1000&q=85',
+        src: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1000&h=800&q=80',
         alt: 'Guitar ready for a music learning session',
       },
       {
         id: 'keyboard-practice',
-        src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1000&q=85',
+        src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1000&h=800&q=80',
         alt: 'Keyboard set up for practice',
       },
       {
         id: 'piano-session',
-        src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1200&q=85',
+        src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1000&h=800&q=80',
         alt: 'Piano keys during a practice session',
       },
       {
         id: 'vocal-music',
-        src: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&q=85',
+        src: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&h=800&q=80',
         alt: 'Singer performing with a microphone',
       },
       {
         id: 'musical-instruments',
-        src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1000&q=85',
+        src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1000&h=800&q=80',
         alt: 'Musical instruments in a creative studio',
       },
       {
         id: 'group-learning',
-        src: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1000&q=85',
+        src: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1000&h=800&q=80',
         alt: 'Musicians learning together',
       },
       {
         id: 'music-performance',
-        src: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1000&q=85',
+        src: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1000&h=800&q=80',
         alt: 'Live music performance on stage',
       },
     ],
@@ -117,8 +128,29 @@ export const siteConfig = {
 
 export const hasConfiguredValue = (value) => Boolean(String(value || '').trim());
 
+export const normalizeEmail = (value) => {
+  const email = String(value ?? '').trim();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : '';
+};
+
+export const normalizePhone = (value) => {
+  const normalized = String(value ?? '').replace(/[\s()\-]+/g, '');
+  const digitsOnly = normalized.replace(/\D/g, '');
+
+  if (digitsOnly.length < 7) {
+    return '';
+  }
+
+  return normalized.startsWith('+') ? `+${digitsOnly}` : digitsOnly;
+};
+
+export const normalizeWhatsApp = (value) => {
+  const digitsOnly = String(value ?? '').replace(/\D/g, '');
+  return digitsOnly.length >= 8 ? digitsOnly : '';
+};
+
 export const getGeneralEnquiryHref = () => {
-  const email = siteConfig.contact.email.trim();
+  const email = normalizeEmail(siteConfig.contact.email);
 
   if (!email) {
     return null;
@@ -135,12 +167,12 @@ export const getGeneralEnquiryHref = () => {
 };
 
 export const getPhoneHref = () => {
-  const phone = siteConfig.contact.phone.trim();
-  return phone ? 'tel:' + phone.replace(/\s+/g, '') : null;
+  const phone = normalizePhone(siteConfig.contact.phone);
+  return phone ? 'tel:' + phone : null;
 };
 
 export const getWhatsAppHref = (message = '') => {
-  const number = siteConfig.contact.whatsappNumber.replace(/\D/g, '');
+  const number = normalizeWhatsApp(siteConfig.contact.whatsappNumber);
 
   if (!number) {
     return null;

@@ -40,7 +40,9 @@ export default function ClassSchedules() {
           </div>
           <div>
             <p>Explore our class schedules and choose the musical programme that suits your routine.</p>
-            {/* <p className="sample-note"><Clock3 size={15} aria-hidden="true" /> Sample timetable — editable, not confirmed academy timings.</p> */}
+            {schedules.some(({ isSample }) => isSample) ? (
+              <p className="sample-note"><Clock3 size={15} aria-hidden="true" /> Sample timetable — timings are not confirmed.</p>
+            ) : null}
           </div>
         </div>
 

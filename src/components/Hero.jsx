@@ -22,12 +22,17 @@ export default function Hero() {
         <div className="hero-media-wrap">
           <div className="hero-orange-block" aria-hidden="true" />
           <figure className="hero-media media-frame">
-            <img
-              src={heroImage?.src}
-              alt={heroImage?.alt || 'A close-up of hands exploring an acoustic guitar'}
-              fetchPriority="high"
-              onError={(event) => event.currentTarget.parentElement.classList.add('image-unavailable')}
-            />
+            <picture>
+              {heroImage?.avifSrc ? <source srcSet={heroImage.avifSrc} type="image/avif" /> : null}
+              <img
+                src={heroImage?.src}
+                alt={heroImage?.alt || 'A close-up of hands exploring an acoustic guitar'}
+                width="1200"
+                height="1800"
+                fetchPriority="high"
+                onError={(event) => event.currentTarget.parentElement.parentElement.classList.add('image-unavailable')}
+              />
+            </picture>
             <figcaption>Find the sound that feels like you.</figcaption>
           </figure>
           <span className="vertical-caption">Make room for your rhythm</span>

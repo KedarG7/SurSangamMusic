@@ -394,6 +394,8 @@
 .contact-address { display: flex; align-items: start; gap: 14px; margin-top: 20px; padding: 18px 0 0; border-top: 1px solid var(--line-light); color: var(--orange); }
 .contact-address span { color: var(--orange-bright); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .contact-address p { margin: 4px 0 0; color: rgba(255, 255, 255, 0.75); font-size: 13px; }
+.contact-directions { display: inline-block; margin-top: 8px; color: rgba(255, 255, 255, 0.82); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+.contact-directions:hover { color: var(--orange-bright); }
 .contact-map { margin-top: 18px; }
 .contact-map iframe { display: block; width: 100%; height: 340px; border: 0; }
 

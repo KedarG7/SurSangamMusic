@@ -9,6 +9,7 @@ const ContactAction = ({ active, href, label, disabledLabel, external = false })
 
 export default function Contact() {
   const setupNeeded = !hasEmail || !hasPhone || !hasWhatsApp
+  const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.address)}`
 
   return (
     <section className="contact section section--ink" id="contact" aria-labelledby="contact-title">
@@ -54,7 +55,11 @@ export default function Contact() {
         {hasAddress ? (
           <div className="contact-address">
             <MapPin size={20} aria-hidden="true" />
-            <div><span>Visit the academy</span><p>{siteConfig.contact.address}</p></div>
+            <div>
+              <span>Visit the academy</span>
+              <p>{siteConfig.contact.address}</p>
+              <a className="contact-directions" href={directionsUrl} target="_blank" rel="noopener noreferrer">Get directions to Sursangam Academy</a>
+            </div>
           </div>
         ) : null}
 

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, X } from 'lucide-react'
 import { courses } from '../data/courses'
-import { pricing } from '../data/pricing'
 
 const categoryOrder = ['Instrumental Music', 'Vocal Music', 'Music Theory']
 
@@ -88,14 +87,13 @@ export default function Classes() {
               </div>
               <div className="course-grid">
                 {categoryCourses.map((course) => {
-                  const hasMatchingPricing = pricing.some((plan) => plan.courseId === course.id)
                   const hasModules = Boolean(course.moduleTracks?.length)
 
                   return (
                     <a
                       className="course-card"
-                      href={hasMatchingPricing ? `#pricing-${course.id}` : '#pricing'}
-                      aria-label={hasModules ? `View ${course.name} course modules` : `View pricing for ${course.name}`}
+                      href="#contact"
+                      aria-label={hasModules ? `View ${course.name} course modules` : `Enquire about ${course.name}`}
                       aria-haspopup={hasModules ? 'dialog' : undefined}
                       key={course.name}
                       onClick={(event) => {
@@ -105,12 +103,17 @@ export default function Classes() {
                       }}
                     >
                       <div className="course-image media-frame">
-                        <img
-                          src={course.image.src}
-                          alt={course.image.alt}
-                          loading="lazy"
-                          onError={(event) => event.currentTarget.parentElement.classList.add('image-unavailable')}
-                        />
+                        <picture>
+                          {course.image.avifSrc ? <source srcSet={course.image.avifSrc} type="image/avif" /> : null}
+                          <img
+                            src={course.image.src}
+                            alt={course.image.alt}
+                            width={course.image.width || 1000}
+                            height={course.image.height || 800}
+                            loading="lazy"
+                            onError={(event) => event.currentTarget.parentElement.parentElement.classList.add('image-unavailable')}
+                          />
+                        </picture>
                       </div>
                       <div className="course-card-content">
                         <h3>{course.name}</h3>
@@ -175,8 +178,8 @@ export default function Classes() {
             ))}
           </div>
           <div className="course-module-footer">
-            <a className="button button--small" href={pricing.some((plan) => plan.courseId === selectedCourse.id) ? `#pricing-${selectedCourse.id}` : '#pricing'} onClick={closeModuleDialog}>
-              View pricing <ArrowUpRight size={16} aria-hidden="true" />
+            <a className="button button--small" href="#contact" onClick={closeModuleDialog}>
+              Enquire about this course <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </div>
         </dialog>

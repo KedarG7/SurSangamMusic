@@ -33,7 +33,7 @@ export default function Footer() {
           {hasPhone ? <a href={`tel:${siteConfig.contact.phone.replace(/[^+\d]/g, '')}`}>{siteConfig.contact.phone}</a> : <span>Phone details coming soon</span>}
           {hasEmail ? <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a> : <span>Email details coming soon</span>}
           <div className="social-links">
-            {siteConfig.contact.socialLinks.filter(({ href }) => href).map(({ label, href, ariaLabel }) => <a href={href} key={label} target="_blank" rel="noreferrer" aria-label={ariaLabel}>{label}</a>)}
+            {siteConfig.contact.socialLinks.filter(({ href }) => href).map(({ label, href, ariaLabel }) => <a href={href} key={label} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel}>{label}</a>)}
           </div>
         </div>
       </div>

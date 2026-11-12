@@ -55,12 +55,17 @@ export default function About() {
       <div className="container about-grid">
         <div className="about-media-wrap">
           <figure className="about-media media-frame" ref={aboutMediaRef}>
-            <img
-              src={aboutImage?.src}
-              alt={aboutImage?.alt || 'Piano keys in a softly lit music room'}
-              loading="lazy"
-              onError={(event) => event.currentTarget.parentElement.classList.add('image-unavailable')}
-            />
+            <picture>
+              {aboutImage?.avifSrc ? <source srcSet={aboutImage.avifSrc} type="image/avif" /> : null}
+              <img
+                src={aboutImage?.src}
+                alt={aboutImage?.alt || 'Musician playing an electronic drum kit'}
+                width="1350"
+                height="1800"
+                loading="lazy"
+                onError={(event) => event.currentTarget.parentElement.parentElement.classList.add('image-unavailable')}
+              />
+            </picture>
             <figcaption>Practice becomes possibility.</figcaption>
           </figure>
         </div>

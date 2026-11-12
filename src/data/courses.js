@@ -31,7 +31,7 @@ export const courses = [
     description:
       'Build confidence with chords, rhythm, and melody through focused guitar learning.',
     image: {
-      src: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Acoustic guitar prepared for a lesson',
     },
     moduleIntro: 'Choose your path: build your foundation through Hindustani classical notes or Western staff notation.',
@@ -77,7 +77,7 @@ export const courses = [
     description:
       'Explore melody, harmony, and rhythmic coordination on the keyboard.',
     image: {
-      src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Keyboard keys ready for practice',
     },
     moduleIntro: 'Learn in the style that suits you: choose Hindustani classical or Western notation.',
@@ -119,8 +119,11 @@ export const courses = [
     description:
       'Develop musical expression, technique, and a strong foundation with the harmonium.',
     image: {
-      src: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1300&q=85',
-      alt: 'Harmonium keys in a music practice space',
+      src: '/harmonium-lesson.jpg',
+      avifSrc: '/harmonium-lesson.avif',
+      width: 1200,
+      height: 923,
+      alt: 'Wooden harmonium keyboard in a music practice room',
     },
     moduleTracks: [
       {
@@ -144,7 +147,7 @@ export const courses = [
     description:
       'Explore the foundations of Hindustani classical vocal music with regular practice.',
     image: {
-      src: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Vocalist singing into a microphone',
     },
     moduleTracks: [
@@ -173,7 +176,7 @@ export const courses = [
     description:
       'Start with voice awareness, pitch, breathing, and the joy of singing.',
     image: {
-      src: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Musician preparing to sing',
     },
     moduleTracks: [
@@ -202,7 +205,7 @@ export const courses = [
     description:
       'Discover melodic expression and performance confidence through light music.',
     image: {
-      src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Singer and musician in a performance setting',
     },
     moduleTracks: [
@@ -230,7 +233,7 @@ export const courses = [
     description:
       'Learn the building blocks that make listening, reading, and creating music clearer.',
     image: {
-      src: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Musical notes and instruments on a practice table',
     },
     moduleTracks: [
@@ -258,7 +261,7 @@ export const courses = [
     description:
       'Understand how musical ideas are written, read, and shared through notation.',
     image: {
-      src: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Sheet music under warm performance lights',
     },
     moduleTracks: [
@@ -286,7 +289,7 @@ export const courses = [
     description:
       'Connect musical concepts with hands-on listening, playing, and practice.',
     image: {
-      src: 'https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=1100&q=85',
+      src: 'https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=1000&h=800&q=80',
       alt: 'Musician working with an instrument during practice',
     },
     moduleTracks: [

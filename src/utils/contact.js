@@ -1,17 +1,20 @@
-import { siteConfig } from '../data/siteConfig'
+import { normalizeEmail, normalizePhone, normalizeWhatsApp, siteConfig } from '../data/siteConfig'
 
 const isUsableValue = (value) => Boolean(String(value || '').trim())
 const contact = siteConfig.contact
+const safeEmail = normalizeEmail(contact.email)
+const safePhone = normalizePhone(contact.phone)
+const safeWhatsApp = normalizeWhatsApp(contact.whatsappNumber)
 
-export const hasEmail = isUsableValue(contact.email)
-export const hasPhone = isUsableValue(contact.phone)
-export const hasWhatsApp = isUsableValue(contact.whatsappNumber)
+export const hasEmail = isUsableValue(safeEmail)
+export const hasPhone = isUsableValue(safePhone)
+export const hasWhatsApp = isUsableValue(safeWhatsApp)
 export const hasAddress = isUsableValue(contact.address)
 
 export const makeMailto = (subject, body) => {
   if (!hasEmail) return '#contact'
 
-  return `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  return `mailto:${safeEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 export const generalEnquiry = () =>
@@ -26,5 +29,5 @@ export const courseEnquiry = (courseName, purpose = 'classes') =>
     `Hello ${siteConfig.academyName},\n\nI would like to know more about ${courseName}${purpose === 'pricing' ? ' and its fees' : ''}.\n\nName:\nPhone number:\n\nThank you.`,
   )
 
-export const phoneHref = hasPhone ? `tel:${contact.phone.replace(/[^+\d]/g, '')}` : null
-export const whatsappHref = hasWhatsApp ? `https://wa.me/${contact.whatsappNumber.replace(/[^\d]/g, '')}` : null
+export const phoneHref = hasPhone ? `tel:${safePhone}` : null
+export const whatsappHref = hasWhatsApp ? `https://wa.me/${safeWhatsApp}` : null

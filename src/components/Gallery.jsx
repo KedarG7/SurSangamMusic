@@ -107,7 +107,7 @@ export default function Gallery() {
               <button type="button" onClick={nextImage} disabled={activeIndex === gallery.length - 1} aria-label="Next photo"><ArrowRight size={18} aria-hidden="true" /></button>
             </div>
           </div>
-          <div className="gallery-grid" ref={galleryTrackRef} aria-label="Academy photo carousel">
+          <div className="gallery-grid" ref={galleryTrackRef} aria-label="Music photo carousel">
             {gallery.map((item, index) => (
               <button
                 className={`gallery-item gallery-item--${index + 1}`}
@@ -120,6 +120,8 @@ export default function Gallery() {
                 <img
                   src={item.image}
                   alt={item.alt}
+                  width="1000"
+                  height="800"
                   loading="lazy"
                   onError={(event) => event.currentTarget.parentElement.classList.add('image-unavailable')}
                 />
@@ -146,7 +148,7 @@ export default function Gallery() {
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={activeImage.title} onClick={() => setActiveImage(null)}>
           <button className="lightbox-close" type="button" onClick={() => setActiveImage(null)} aria-label="Close enlarged image"><X size={23} /></button>
           <figure onClick={(event) => event.stopPropagation()}>
-            <img src={activeImage.image} alt={activeImage.alt} />
+            <img src={activeImage.image} alt={activeImage.alt} width="1000" height="800" />
             <figcaption>{activeImage.title}</figcaption>
           </figure>
         </div>
